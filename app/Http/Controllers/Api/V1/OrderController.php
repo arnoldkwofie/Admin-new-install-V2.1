@@ -145,6 +145,15 @@ class OrderController extends Controller
             $delivery_charge = ($request->distance * $per_km_shipping_charge > $minimum_shipping_charge) ? $request->distance * $per_km_shipping_charge : $minimum_shipping_charge;
         }
 
+        $maximum_distance =\App\Models\BusinessSetting::where(['key' => 'maximum_distance'])->first()->value;
+        if($request->distance > $maximum_distance){
+            $errors = [];
+                array_push($errors, ['code' => 'distance', 'message' => trans('messages.out_of_distance').$maximum_distance.'km']);
+                return response()->json([
+                    'errors' => $errors
+                ], 403);
+        }
+
         if($request->latitude && $request->longitude)
         {
             $point = new Point($request->latitude,$request->longitude);

@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-                <form action="{{route('admin.business-settings.update-setup')}}" method="post"
+                <form action="{{route('admin.business-settings.')}}" method="post"
                       enctype="multipart/form-data">
                     @csrf
                     @php($name=\App\Models\BusinessSetting::where('key','business_name')->first())
@@ -125,7 +125,7 @@
                         <div class="col-md-6 col-sm-6 col-12">
                         @php($low_value=\App\Models\BusinessSetting::where('key','low_value')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">Low value </label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.low_value')}} </label>
                                 <input type="text" name="low_value" value="{{$low_value->value??''}}" class="form-control"
                                 placeholder="Low value " required>
                             </div>
@@ -134,7 +134,7 @@
                         <div class="col-md-6 col-sm-6 col-12">
                         @php($high_value=\App\Models\BusinessSetting::where('key','high_value')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> High value </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.high_value')}} </label>
                                 <input type="text" name="high_value" value="{{$high_value->value??''}}" class="form-control"
                                 placeholder="High value" required>
                             </div>
@@ -144,13 +144,13 @@
                         <div class="col-md-4 col-sm-4 col-12">
                         @php($low_fraction_numerator=\App\Models\BusinessSetting::where('key','low_fraction_numerator')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> Low Fraction Numerator </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.low_fraction_numerator')}} </label>
                                 <input type="text" name="low_fraction_numerator" value="{{$low_fraction_numerator->value??''}}" class="form-control"
                                 placeholder="Low Fraction Numerator" required>
                             </div>
                             @php($low_fraction_denominator=\App\Models\BusinessSetting::where('key','low_fraction_denominator')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> Low Fraction Denominator </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.low_fraction_denominator')}} </label>
                                 <input type="text" name="low_fraction_denominator" value="{{$low_fraction_denominator->value??''}}" class="form-control"
                                 placeholder="Low Fraction Denominator" required>
                             </div>
@@ -158,13 +158,13 @@
                         <div class="col-md-4 col-sm-4 col-12">
                         @php($intermediate_fraction_numerator=\App\Models\BusinessSetting::where('key','intermediate_fraction_numerator')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> Intermediate Fraction Numerator </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.intermediate_fraction_numerator')}} </label>
                                 <input type="text" name="intermediate_fraction_numerator" value="{{$intermediate_fraction_numerator->value??''}}" class="form-control"
                                 placeholder="Low Fraction" required>
                             </div>
                             @php($intermediate_fraction_denominator=\App\Models\BusinessSetting::where('key','intermediate_fraction_denominator')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> Intermediate Fraction Denominator </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.intermediate_fraction_denominator')}}</label>
                                 <input type="text" name="intermediate_fraction_denominator" value="{{$intermediate_fraction_denominator->value??''}}" class="form-control"
                                 placeholder="Intermediate Fraction Denominator" required>
                             </div>
@@ -172,13 +172,13 @@
                         <div class="col-md-4 col-sm-4 col-12">
                         @php($high_fraction_numerator=\App\Models\BusinessSetting::where('key','high_fraction_numerator')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> High Fraction Numerator </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.high_fraction_numerator')}} </label>
                                 <input type="text" name="high_fraction_numerator" value="{{$high_fraction_numerator->value??''}}" class="form-control"
                                 placeholder="High Fraction Numerator" required>
                             </div>
                             @php($high_fraction_denominator=\App\Models\BusinessSetting::where('key','high_fraction_denominator')->first())
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1"> High Fraction Denominator </label>
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.high_fraction_denominator')}}  </label>
                                 <input type="text" name="high_fraction_denominator" value="{{$high_fraction_denominator->value??''}}" class="form-control"
                                 placeholder="High Fraction Denominator" required>
                             </div>
@@ -759,6 +759,14 @@
                             <div class="form-group">
                                 <label class="input-label d-inline text-capitalize" for="per_km_shipping_charge">{{__('messages.per_km_shipping_charge')}}</label>
                                 <input type="number" name="per_km_shipping_charge" class="form-control" id="per_km_shipping_charge"  min="0" step=".01" value="{{$per_km_shipping_charge?$per_km_shipping_charge->value:0}}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                        @php($maximum_distance=\App\Models\BusinessSetting::where('key','maximum_distance')->first())
+                            <div class="form-group">
+                                <label class="input-label d-inline text-capitalize" for="maximum_distance">{{__('messages.maximum_distance')}}</label>
+                                <input type="number" name="maximum_distance" class="form-control" id="maximum_distance"  min="0" step=".01" value="{{$maximum_distance?$maximum_distance->value:5}}" required>
                             </div>
                         </div>
                     </div>

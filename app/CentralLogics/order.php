@@ -257,21 +257,27 @@ class OrderLogic
         $admin_refund=(($restaurant_deduction/100)*$food_price);
         $restaurant_refund= $food_price- (($restaurant_deduction/100)*$food_price);
 
-        $adminWallet->total_commission_earning = $adminWallet->total_commission_earning - $admin_refund;
+        
+        
+        if($order->order_status == 'delivered')
+        {
+           //$refund_amount = $refund_amount - $order->delivery_charge;
+            $status = '';
+            return false;
+            
+        }
+        else
+        {
+            $adminWallet->total_commission_earning = $adminWallet->total_commission_earning - $admin_refund;
 
         $vendorWallet->total_earning = $vendorWallet->total_earning - $restaurant_refund;
 
         $refund_amount= $refund_amount-$comission_amount;
 
         $status = 'refunded_with_delivery_charge';
-        if($order->order_status == 'delivered')
-        {
-            $refund_amount = $refund_amount - $order->delivery_charge;
-            $status = 'refunded_without_delivery_charge';
-        }
-        else
-        {
-            $adminWallet->delivery_charge = $adminWallet->delivery_charge - $order_transaction->delivery_charge;
+        
+      
+         $adminWallet->delivery_charge = $adminWallet->delivery_charge - $order_transaction->delivery_charge;
         }
         try
         {

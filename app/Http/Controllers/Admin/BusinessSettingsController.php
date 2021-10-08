@@ -84,6 +84,10 @@ class BusinessSettingsController extends Controller
             'value' => $request['delivery_deduction']
         ]);
 
+        DB::table('business_settings')->updateOrInsert(['key' => 'maximum_distance'], [
+            'value' => $request['maximum_distance']
+        ]);
+
         //end
 
         DB::table('business_settings')->updateOrInsert(['key' => 'currency'], [

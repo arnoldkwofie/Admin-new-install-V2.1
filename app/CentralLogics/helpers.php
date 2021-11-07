@@ -11,6 +11,7 @@ use App\Models\Review;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\CentralLogics\RestaurantLogic;
+use App\Models\AdminWallet;
 
 class Helpers
 {
@@ -434,12 +435,24 @@ class Helpers
         return $currency_symbol;
     }
 
+    public static function Get_Admin_Wallet()
+    {
+        
+        $adminWallet = AdminWallet::firstOrNew(
+            ['admin_id' => Admin::where('role_id', 1)->first()->id]
+          );
+
+        return $adminWallet->total_commission_earning;
+    }
+
+
     public static function format_currency($value)
     {
         $currency_symbol_position = BusinessSetting::where(['key' => 'currency_symbol_position'])->first()->value;
 
         return $currency_symbol_position=='right'?$value.' '.self::currency_symbol():self::currency_symbol().' '.$value;
     }
+
     public static function send_push_notif_to_device($fcm_token, $data)
     {
         $key = BusinessSetting::where(['key' => 'push_notification_key'])->first()->value;

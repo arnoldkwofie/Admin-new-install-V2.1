@@ -290,18 +290,27 @@
                                     <dt class="col-sm-6">{{__('messages.coupon')}} {{__('messages.discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
+                                   
                                     <dt class="col-sm-6">{{__('messages.vat/tax')}}:</dt>
                                     <dd class="col-sm-6">
                                         + {{\App\CentralLogics\Helpers::format_currency($order['total_tax_amount'])}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.delivery')}} {{__('messages.fee')}}:</dt>
+                                    <dt class="col-sm-6">{{__('messages.service_charge')}}:</dt>
+                                    <dd class="col-sm-6">
+                                    @php($restaurant_deduction =\App\Models\BusinessSetting::where(['key' => 'restaurant_deduction'])->first()->value)
+                                             @php($service_charge=($restaurant_deduction/100)* $sub_total)
+                                             
+                                             + {{\App\CentralLogics\Helpers::format_currency($service_charge)}}
+                                        <hr>
+                                    </dd>
+                                    <!--dt class="col-sm-6">{{__('messages.delivery')}} {{__('messages.fee')}}:</dt>
                                     <dd class="col-sm-6">
                                             @php($del_c=$order['delivery_charge'])
                                         + {{\App\CentralLogics\Helpers::format_currency($del_c)}}
                                         <hr>
-                                    </dd>
-
+                                    </dd-->
+                                      
                                     <dt class="col-sm-6">{{__('messages.total')}}:</dt>
-                                    <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total+$del_c+$order['total_tax_amount']+$add_ons_cost-$order['coupon_discount_amount'] - $order['restaurant_discount_amount'])}}</dd>
+                                    <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total+$order['total_tax_amount']+$add_ons_cost-$order['coupon_discount_amount'] - $order['restaurant_discount_amount']-$service_charge)}}</dd>
                                 </dl>
                                 <!-- End Row -->
                             </div>

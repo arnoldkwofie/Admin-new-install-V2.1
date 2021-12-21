@@ -583,5 +583,6 @@ return [
     'intermediate_fraction_denominator' => 'Intermediate Fraction Denominator',
     'high_fraction_numerator' => 'High Fraction Numerator',
     'high_fraction_denominator' => 'High Fraction Denominator',
+    'service_charge' => 'Service charge',
 
 ];

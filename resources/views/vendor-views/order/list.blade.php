@@ -242,6 +242,7 @@
                         <th>{{__('messages.customer')}}</th>
                         <th>{{__('messages.payment')}} {{__('messages.status')}}</th>
                         <th>{{__('messages.total')}}</th>
+                        <th>Net</th>
                         <th>{{__('messages.order')}} {{__('messages.status')}}</th>
                         <th>{{__('messages.order')}} {{__('messages.type')}}</th>
                         <th>{{__('messages.actions')}}</th>
@@ -299,9 +300,18 @@
                                 }
                                      
                                     $order_without_com = $order_amount - $comission_amount;
-                                    $total_order_without_com = $order_without_com + $order['original_delivery_charge'];
+                                    
+                                    
                                 @endphp
-                                {{\App\CentralLogics\Helpers::format_currency(round($total_order_without_com,2))}}
+                                {{\App\CentralLogics\Helpers::format_currency(round($order_without_com,2))}}
+                            </td>
+                            <td>
+                            @php  
+                            $restaurant_deduction =\App\Models\BusinessSetting::where(['key' => 'restaurant_deduction'])->first()->value;
+                            $net=$order_without_com - (($restaurant_deduction/100)* $order_without_com);
+                            @endphp
+
+                            {{\App\CentralLogics\Helpers::format_currency(round($net,2))}}
                             </td>
                             <td class="text-capitalize">
                                 @if($order['order_status']=='pending')

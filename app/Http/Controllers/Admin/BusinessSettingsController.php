@@ -88,6 +88,18 @@ class BusinessSettingsController extends Controller
             'value' => $request['maximum_distance']
         ]);
 
+        DB::table('business_settings')->updateOrInsert(['key' => 'first_distance_percent'], [
+            'value' => $request['first_distance_percent']
+        ]);
+
+        DB::table('business_settings')->updateOrInsert(['key' => 'second_distance_percent'], [
+            'value' => $request['second_distance_percent']
+        ]);
+
+        DB::table('business_settings')->updateOrInsert(['key' => 'third_distance_percent'], [
+            'value' => $request['third_distance_percent']
+        ]);
+
         //end
 
         DB::table('business_settings')->updateOrInsert(['key' => 'currency'], [

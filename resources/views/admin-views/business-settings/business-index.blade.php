@@ -185,6 +185,39 @@
                         </div>
                     </div>
 
+
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-12">
+                        @php($first_distance_percent=\App\Models\BusinessSetting::where('key','first_distance_percent')->first())
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.first_distance_percent')}} </label>
+                                <input type="text" name="first_distance_percent" value="{{$first_distance_percent->value??''}}" class="form-control"
+                                placeholder="First Distance Percent" required>
+                            </div>
+                          
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-12">
+                        @php($second_distance_percent=\App\Models\BusinessSetting::where('key','second_distance_percent')->first())
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.second_distance_percent')}} </label>
+                                <input type="text" name="second_distance_percent" value="{{$second_distance_percent->value??''}}" class="form-control"
+                                placeholder="Second Distance Percent" required>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-12">
+                        @php($third_distance_percent=\App\Models\BusinessSetting::where('key','third_distance_percent')->first())
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.third_distance_percent')}}</label>
+                                <input type="text" name="third_distance_percent" value="{{$third_distance_percent->value??''}}" class="form-control"
+                                placeholder="Third Distance Percent" required>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+
+
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-12">
                             @php($risk_allowance=\App\Models\BusinessSetting::where('key','risk_allowance')->first())

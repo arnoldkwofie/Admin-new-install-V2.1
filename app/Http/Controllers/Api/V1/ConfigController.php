@@ -74,6 +74,9 @@ class ConfigController extends Controller
             'intermediate_fraction_denominator' => (double)BusinessSetting::where(['key' => 'intermediate_fraction_denominator'])->first()->value,
             'high_fraction_numerator' => (double)BusinessSetting::where(['key' => 'high_fraction_numerator'])->first()->value,
             'high_fraction_denominator' => (double)BusinessSetting::where(['key' => 'high_fraction_denominator'])->first()->value,
+            'first_distance_percent' => (double)BusinessSetting::where(['key' => 'first_distance_percent'])->first()->value,
+            'second_distance_percent' => (double)BusinessSetting::where(['key' => 'second_distance_percent'])->first()->value,
+            'third_distance_percent' => (double)BusinessSetting::where(['key' => 'third_distance_percent'])->first()->value,
             
         ]);
     }

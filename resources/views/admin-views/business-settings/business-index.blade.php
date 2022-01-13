@@ -217,6 +217,29 @@
                     </div>
 
 
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-12">
+                        @php($delivery_minute=\App\Models\BusinessSetting::where('key','delivery_minute')->first())
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.delivery_minute')}} </label>
+                                <input type="text" name="delivery_minute" value="{{$delivery_minute->value??''}}" class="form-control"
+                                placeholder="Delivery Minute" required>
+                            </div>
+                          
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-12">
+                        @php($delivery_distance=\App\Models\BusinessSetting::where('key','delivery_distance')->first())
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1"> {{__('messages.delivery_distance')}} </label>
+                                <input type="text" name="delivery_distance" value="{{$delivery_distance->value??''}}" class="form-control"
+                                placeholder="Delivery Distance" required>
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+
+
 
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-12">

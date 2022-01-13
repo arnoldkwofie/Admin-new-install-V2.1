@@ -77,6 +77,8 @@ class ConfigController extends Controller
             'first_distance_percent' => (double)BusinessSetting::where(['key' => 'first_distance_percent'])->first()->value,
             'second_distance_percent' => (double)BusinessSetting::where(['key' => 'second_distance_percent'])->first()->value,
             'third_distance_percent' => (double)BusinessSetting::where(['key' => 'third_distance_percent'])->first()->value,
+            'delivery_minute' => (double)BusinessSetting::where(['key' => 'delivery_minute'])->first()->value,
+            'delivery_distance' => (double)BusinessSetting::where(['key' => 'delivery_distance'])->first()->value,
             
         ]);
     }

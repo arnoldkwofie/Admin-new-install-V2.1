@@ -100,6 +100,13 @@ class BusinessSettingsController extends Controller
             'value' => $request['third_distance_percent']
         ]);
 
+        DB::table('business_settings')->updateOrInsert(['key' => 'delivery_minute'], [
+            'value' => $request['delivery_minute']
+        ]);
+
+        DB::table('business_settings')->updateOrInsert(['key' => 'delivery_distance'], [
+            'value' => $request['delivery_distance']
+        ]);
         //end
 
         DB::table('business_settings')->updateOrInsert(['key' => 'currency'], [

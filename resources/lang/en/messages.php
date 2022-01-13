@@ -585,6 +585,8 @@ return [
     'high_fraction_denominator' => 'High Fraction Denominator',
     'service_charge' => 'Service charge',
     'first_distance_percent' => 'First Distance %',
-    'second' => 'Second Distance %',
+    'second_distance_percent' => 'Second Distance %',
     'third_distance_percent' => 'Third Distance %',
+    'delivery_minute' => 'Delivery Minute After Placement',
+    'delivery_distance' => 'Delivery Distance to cover',
 ];
